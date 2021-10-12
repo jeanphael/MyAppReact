@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "MyAppReact",
+    "slug": "MyAppReact",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "MyAppReact"
+}
