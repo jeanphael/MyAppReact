@@ -96,10 +96,6 @@ export default class App extends React.Component {
   }
   onSigneClicked(signeValue)
   {
-    if(this.state.firstNumber !='' && this.state.secondNumber !='' && this.state.signe !='' )
-    {
-      return;
-    }
     if(this.state.firstNumber != '')
     {
       var newText = this.state.firstNumber+''+signeValue+'';

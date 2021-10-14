@@ -40,7 +40,7 @@ export default class App extends React.Component {
       }
       if(this.state.signe == '÷')
       {
-        var resultValue = ( this.state.firstNumber / this.state.secondNumber);
+        var resultValue = this.state.firstNumber % this.state.secondNumber;
         this.setState({calculResult:resultValue,firstNumber: '',secondNumber:'',signe: '',needReset:true});
         return;
       }
@@ -96,10 +96,6 @@ export default class App extends React.Component {
   }
   onSigneClicked(signeValue)
   {
-    if(this.state.firstNumber !='' && this.state.secondNumber !='' && this.state.signe !='' )
-    {
-      return;
-    }
     if(this.state.firstNumber != '')
     {
       var newText = this.state.firstNumber+''+signeValue+'';

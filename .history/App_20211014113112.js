@@ -11,10 +11,8 @@ export default class App extends React.Component {
     this.onEqualsClicked = this.onEqualsClicked.bind(this);
     this.onSigneClicked = this.onSigneClicked.bind(this);
     
-    this.changeValue = this.changeValue.bind(this);
-    
     this.state = {
-      calculResult: '0',firstNumber: '',secondNumber:'',signe: '',needReset:false,
+      calculResult: '0',firstNumber: '',secondNumber:'',signe: '',
     }
   }
   onResetClicked()
@@ -28,34 +26,26 @@ export default class App extends React.Component {
     {
       if(this.state.signe == '+')
       {
-        var resultValue = parseInt(this.state.firstNumber) + parseInt(this.state.secondNumber);
-        this.setState({calculResult:resultValue,firstNumber: '',secondNumber:'',signe: '',needReset:true});
+        var resultValue = this.state.firstNumber + this.state.secondNumber;
+        this.setState({calculResult:resultValue,firstNumber: '',secondNumber:'',signe: '',});
         return;
       }
       if(this.state.signe == 'x')
       {
         var resultValue = this.state.firstNumber * this.state.secondNumber;
-        this.setState({calculResult:resultValue,firstNumber: '',secondNumber:'',signe: '',needReset:true});
+        this.setState({calculResult:resultValue,firstNumber: '',secondNumber:'',signe: '',});
         return;
       }
       if(this.state.signe == '÷')
       {
-        var resultValue = ( this.state.firstNumber / this.state.secondNumber);
-        this.setState({calculResult:resultValue,firstNumber: '',secondNumber:'',signe: '',needReset:true});
-        return;
-      }
-      if(this.state.signe == '-')
-      {
-        var resultValue = parseInt(this.state.firstNumber) - parseInt(this.state.secondNumber);
-        this.setState({calculResult:resultValue,firstNumber: '',secondNumber:'',signe: '',needReset:true});
+        var resultValue = this.state.firstNumber % this.state.secondNumber;
+        this.setState({calculResult:resultValue,firstNumber: '',secondNumber:'',signe: '',});
         return;
       }
     }
   }
-  
-  changeValue(numberValue)
+  onButtonClicked(numberValue)
   {
-    
     if(this.state.firstNumber !='' && this.state.secondNumber !='' && this.state.signe !='' )
     {
       var secondText = this.state.secondNumber+'' + numberValue;
@@ -79,27 +69,8 @@ export default class App extends React.Component {
     }
     
   }
-  onButtonClicked(numberValue)
-  {
-    if(this.state.needReset == true)
-    {
-        this.setState({ calculResult:'0',needReset:false }, function() {
-        this.changeValue(numberValue);
-      });
-    }
-    else
-    {
-      this.changeValue(numberValue);
-
-    }
-    
-  }
   onSigneClicked(signeValue)
   {
-    if(this.state.firstNumber !='' && this.state.secondNumber !='' && this.state.signe !='' )
-    {
-      return;
-    }
     if(this.state.firstNumber != '')
     {
       var newText = this.state.firstNumber+''+signeValue+'';
@@ -214,10 +185,10 @@ export default class App extends React.Component {
               =
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{borderColor:'grew',borderWidth:2,flex:1}} onPress={() => this.onSigneClicked('+')}>
+          <TouchableOpacity style={{flex:1}}>
 
             <Text style={{ fontSize: 20, alignSelf: 'center' }}>
-              +
+              
             </Text>
           </TouchableOpacity>
           
